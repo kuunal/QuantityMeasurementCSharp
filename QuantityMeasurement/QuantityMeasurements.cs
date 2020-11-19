@@ -18,8 +18,15 @@ namespace QuantityMeasurement
 
         public QuantityMeasurements(double quantity, Units unit )
         {
-            this.quantity = quantity;
-            this.unit = GetDescription(unit);
+            try
+            {
+                this.quantity = quantity * (double)unit;
+                this.unit = GetDescription(unit);
+            }
+            catch (System.NullReferenceException)
+            {
+                throw new QuantityMeasurementException(EXCEPTIONENUMS.NULL_VALUE);
+            }
         } 
 
 
@@ -35,6 +42,17 @@ namespace QuantityMeasurement
             var field = unit.GetType().GetField(unit.ToString());
             var attr = field.GetCustomAttributes(typeof(DescriptionAttribute), false);
             return (attr[0] as DescriptionAttribute).Description;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            if (this == obj)
+                return true;
+            if (this.GetType() == obj.GetType())
+                return true;
+            return false;
         }
     }
 }
