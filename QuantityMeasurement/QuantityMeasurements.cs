@@ -3,6 +3,7 @@ using QuantityMeasurement.Exceptions;
 using System;
 using System.ComponentModel;
 using System.Reflection;
+using static QuantityMeasurement.Enums.EnumData;
 
 namespace QuantityMeasurement
 {
@@ -10,7 +11,7 @@ namespace QuantityMeasurement
     {
 
         double quantity;
-        string unit; 
+        CATEGORIES unit; 
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -20,8 +21,9 @@ namespace QuantityMeasurement
         {
             try
             {
-                this.quantity = quantity * (double)unit;
-                this.unit = GetDescription(unit);
+                EnumData data = GetDescription(unit);
+                this.quantity = quantity * data.value;
+                this.unit = data.category;
             }
             catch (System.NullReferenceException)
             {
@@ -37,11 +39,12 @@ namespace QuantityMeasurement
             return (this.quantity == that.quantity);
         }
 
-        public string GetDescription(Units unit)
+        public EnumData GetDescription(Units unit)
         {
+            var x = unit.ToString();
             var field = unit.GetType().GetField(unit.ToString());
-            var attr = field.GetCustomAttributes(typeof(DescriptionAttribute), false);
-            return (attr[0] as DescriptionAttribute).Description;
+            var attr = field.GetCustomAttributes(typeof(EnumData), false);
+            return (attr[0] as EnumData);
         }
 
         public override bool Equals(object obj)
