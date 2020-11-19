@@ -11,13 +11,13 @@ namespace QuantityMeasurement
     {
 
         double quantity;
-        CATEGORIES unit; 
+        CATEGORIES unit;
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
         }
 
-        public QuantityMeasurements(double quantity, Units unit )
+        public QuantityMeasurements(double quantity, Units unit)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace QuantityMeasurement
             {
                 throw new QuantityMeasurementException(EXCEPTIONENUMS.NULL_VALUE);
             }
-        } 
+        }
 
 
         public bool CheckEquals(QuantityMeasurements that)
@@ -56,6 +56,28 @@ namespace QuantityMeasurement
             if (this.GetType() == obj.GetType())
                 return true;
             return false;
+        }
+
+        public double addQuantities(params QuantityMeasurements[] quantityMeasurements){
+            if (quantityMeasurements.Length == 0)
+            {
+                return 0;
+            }
+            else if (quantityMeasurements.Length == 1)
+            {
+                return quantityMeasurements[0].quantity;
+            }
+            else
+            {
+                double total = 0;
+                foreach (QuantityMeasurements quantityObject in quantityMeasurements)
+                {
+                    if (this.unit != quantityObject.unit)
+                        throw new QuantityMeasurementException(EXCEPTIONENUMS.QUANTITY_MISMATCH);
+                    total += quantityObject.quantity;
+                }
+                return total;
+            }
         }
     }
 }
