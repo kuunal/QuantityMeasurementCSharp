@@ -172,7 +172,7 @@ namespace QuantityMeasurementTest
             QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(1, Units.FEET);
             QuantityMeasurements quantityMeasurement = new QuantityMeasurements(2, Units.INCH);
             double sumInInches = quantityMeasurement.addQuantities(quantityMeasurement, quantityMeasurement1);
-            Assert.AreEqual(14, sumInInches, 0);
+            Assert.AreEqual(14, sumInInches);
         }
 
         [Test]
@@ -181,7 +181,7 @@ namespace QuantityMeasurementTest
             QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(1, Units.FEET);
             QuantityMeasurements quantityMeasurement = new QuantityMeasurements(1, Units.FEET);
             double sumInInches = quantityMeasurement.addQuantities(quantityMeasurement, quantityMeasurement1);
-            Assert.AreEqual(24, sumInInches, 0);
+            Assert.AreEqual(24, sumInInches);
         }
 
         [Test]
@@ -190,8 +190,15 @@ namespace QuantityMeasurementTest
             QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(2, Units.INCH);
             QuantityMeasurements quantityMeasurement = new QuantityMeasurements(2.5, Units.CENTIMETER);
             double sumInInches = quantityMeasurement.addQuantities(quantityMeasurement, quantityMeasurement1);
-            Assert.AreEqual(3, sumInInches, 0);
+            Assert.AreEqual(3, sumInInches);
         }
 
+        [Test]
+        public void givenOneGallon_AndRespectiveLitres_WhenCompared_ReturnsTrue()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(1, Units.GALLON);
+            QuantityMeasurements quantityMeasurement = new QuantityMeasurements(3.78, Units.LITRE);
+            Assert.IsTrue(quantityMeasurement.CheckEquals(quantityMeasurement1));
+        }
     }
 }
