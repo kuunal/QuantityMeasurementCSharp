@@ -250,5 +250,14 @@ namespace QuantityMeasurementTest
             QuantityMeasurements quantityMeasurement = new QuantityMeasurements(1000, Units.KILOGRAM);
             Assert.IsTrue(quantityMeasurement.CheckEquals(quantityMeasurement1));
         }
+
+        [Test]
+        public void givenOneTon_AndThousandGram_WhenForAddition_ReturnsTotal_InKiloGrams()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(1, Units.TONNE);
+            QuantityMeasurements quantityMeasurement = new QuantityMeasurements(1000, Units.GRAMS);
+            double totalInKiloGram = quantityMeasurement.addQuantities(quantityMeasurement, quantityMeasurement1);
+            Assert.AreEqual(1001, totalInKiloGram);
+        }
     }
 }
