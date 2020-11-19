@@ -67,5 +67,12 @@ namespace QuantityMeasurementTest
             Assert.IsTrue(Inch.Equals(anotherInch));
         }
 
+        [Test]
+        public void givenInch_WhenEqualValues_ReturnsTrue()
+        {
+            QuantityMeasurements inch = new QuantityMeasurements(0.0, Units.INCH);
+            QuantityMeasurements anotherinch = new QuantityMeasurements(0.0, Units.INCH);
+            Assert.IsTrue(inch.CheckEquals(anotherinch));
+        }
     }
 }
