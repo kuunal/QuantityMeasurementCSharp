@@ -1,4 +1,6 @@
 using NUnit.Framework;
+using QuantityMeasurement;
+using QuantityMeasurement.Enums;
 
 namespace QuantityMeasurementTest
 {
@@ -10,9 +12,11 @@ namespace QuantityMeasurementTest
         }
 
         [Test]
-        public void Test1()
+        public void GivenFeet_WhenEqual_ShouldReturnTrue()
         {
-            Assert.Pass();
+            QuantityMeasurements feet = new QuantityMeasurements(0.0, Units.FEET);
+            QuantityMeasurements inch = new QuantityMeasurements(0.0, Units.INCH);
+            Assert.IsTrue(feet.CheckEquals(inch));
         }
     }
 }
