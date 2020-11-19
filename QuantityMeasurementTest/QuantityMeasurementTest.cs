@@ -18,5 +18,13 @@ namespace QuantityMeasurementTest
             QuantityMeasurements inch = new QuantityMeasurements(0.0, Units.INCH);
             Assert.IsTrue(feet.CheckEquals(inch));
         }
+
+        [Test]
+        public void givenFeet_WhenEqual_ReturnsTrue()
+        {
+            QuantityMeasurements feet = new QuantityMeasurements(0.0, Units.FEET);
+            QuantityMeasurements inch = new QuantityMeasurements(0.0, Units.FEET);
+            Assert.IsTrue(feet.CheckEquals(inch));
+        }
     }
 }
