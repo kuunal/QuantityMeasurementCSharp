@@ -11,7 +11,8 @@ namespace QuantityMeasurement
     {
 
         double quantity;
-        CATEGORIES unit;
+        CATEGORIES category;
+        Units unit;
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -21,9 +22,13 @@ namespace QuantityMeasurement
         {
             try
             {
+                this.unit = unit;
                 EnumData data = GetDescription(unit);
-                this.quantity = quantity * data.value;
-                this.unit = data.category;
+                if (this.unit == Units.CELSIUS)
+                    this.quantity = (quantity * 9 / 5) + 32;
+                else
+                    this.quantity = quantity * data.value;
+                this.category = data.category;
             }
             catch (System.NullReferenceException)
             {
@@ -34,8 +39,8 @@ namespace QuantityMeasurement
 
         public bool CheckEquals(QuantityMeasurements that)
         {
-            if (this.unit != that.unit)
-                throw new QuantityMeasurementException(EXCEPTIONENUMS.QUANTITY_MISMATCH);
+            if (this.category != that.category)
+                throw new QuantityMeasurementException(EXCEPTIONENUMS.UNIT_MISMATCH);
             return (this.quantity == that.quantity);
         }
 
@@ -72,8 +77,8 @@ namespace QuantityMeasurement
                 double total = 0;
                 foreach (QuantityMeasurements quantityObject in quantityMeasurements)
                 {
-                    if (this.unit != quantityObject.unit)
-                        throw new QuantityMeasurementException(EXCEPTIONENUMS.QUANTITY_MISMATCH);
+                    if (this.category != quantityObject.category)
+                        throw new QuantityMeasurementException(EXCEPTIONENUMS.UNIT_MISMATCH);
                     total += quantityObject.quantity;
                 }
                 return total;
