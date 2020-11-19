@@ -11,7 +11,7 @@ namespace QuantityMeasurement.Enums
         {
             LENGTH
         }
-        public double value { get; set; }
+        public double value { get; }
         public CATEGORIES category { get; set; }
         public EnumData() { }
 
