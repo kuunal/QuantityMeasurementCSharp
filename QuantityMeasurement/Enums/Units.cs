@@ -9,7 +9,8 @@ namespace QuantityMeasurement.Enums
     {
         public enum CATEGORIES
         {
-            LENGTH
+            LENGTH,
+            VOLUMES
         }
         public double value { get; }
         public CATEGORIES category { get; set; }
@@ -33,7 +34,17 @@ namespace QuantityMeasurement.Enums
         YARD,
 
         [EnumData(0.4, EnumData.CATEGORIES.LENGTH)]
-        CENTIMETER
+        CENTIMETER,
+
+        [EnumData(1, EnumData.CATEGORIES.VOLUMES)]
+        MILILITRE,
+
+        [EnumData(1000, EnumData.CATEGORIES.VOLUMES)]
+        LITRE,
+
+        [EnumData(3780, EnumData.CATEGORIES.VOLUMES)]
+        GALLON
+
     }
 
 
