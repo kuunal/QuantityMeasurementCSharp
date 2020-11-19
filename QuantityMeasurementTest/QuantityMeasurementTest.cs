@@ -200,5 +200,21 @@ namespace QuantityMeasurementTest
             QuantityMeasurements quantityMeasurement = new QuantityMeasurements(3.78, Units.LITRE);
             Assert.IsTrue(quantityMeasurement.CheckEquals(quantityMeasurement1));
         }
+
+        [Test]
+        public void givenOneLitre_AndThousandMiliLitre_WhenCompared_ReturnsTrue()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(1, Units.LITRE);
+            QuantityMeasurements quantityMeasurement = new QuantityMeasurements(1000, Units.MILILITRE);
+            Assert.IsTrue(quantityMeasurement1.CheckEquals(quantityMeasurement));
+        }
+
+        [Test]
+        public void givenOneGallon_AndThreeThousandSevenHunderedAndEightyMiliLitre_WhenCompared_ReturnsTrue()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(3780, Units.MILILITRE);
+            QuantityMeasurements quantityMeasurement = new QuantityMeasurements(1, Units.GALLON);
+            Assert.IsTrue(quantityMeasurement1.CheckEquals(quantityMeasurement));
+        }
     }
 }
