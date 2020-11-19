@@ -11,6 +11,9 @@ namespace QuantityMeasurement.Enums
         FEET = 12,
 
         [Description("Length")]
-        INCH = 1
+        INCH = 1,
+
+        [Description("Length")]
+        YARD = 36
     }
 }
