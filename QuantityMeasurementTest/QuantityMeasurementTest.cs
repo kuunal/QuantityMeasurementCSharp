@@ -43,5 +43,13 @@ namespace QuantityMeasurementTest
             Assert.IsFalse(feet.Equals(anotherfeet));
         }
 
+        [Test]
+        public void givenFeet_WhenReferingToSame_ReturnsTrue()
+        {
+            QuantityMeasurements feet = new QuantityMeasurements(1.0, Units.FEET);
+            QuantityMeasurements anotherFeet = feet;
+            Assert.IsTrue(feet.Equals(anotherFeet));
+        }
+
     }
 }
