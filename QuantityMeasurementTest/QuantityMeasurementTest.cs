@@ -140,5 +140,14 @@ namespace QuantityMeasurementTest
             Assert.IsTrue(cm.CheckEquals(inch));
         }
 
+        [Test]
+        public void givenInches_WhenAdded_ReturnsSum_InInches()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(2, Units.INCH);
+            QuantityMeasurements quantityMeasurement = new QuantityMeasurements(2, Units.INCH);
+            double sumInInches = quantityMeasurement.addQuantities(quantityMeasurement, quantityMeasurement1);
+            Assert.AreEqual(4, sumInInches);
+        }
+
     }
 }
