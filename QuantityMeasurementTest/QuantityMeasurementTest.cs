@@ -90,5 +90,48 @@ namespace QuantityMeasurementTest
             QuantityMeasurements yard = new QuantityMeasurements(1.0, Units.YARD);
             Assert.IsTrue(feet.CheckEquals(yard));
         }
+
+        [Test]
+        public void givenOneFeetAndOneYard_WhenToCompare_ReturnsFalse()
+        {
+            QuantityMeasurements feet = new QuantityMeasurements(3.0, Units.FEET);
+            QuantityMeasurements anotherFeet = new QuantityMeasurements(1.0, Units.FEET);
+            Assert.IsFalse(feet.CheckEquals(anotherFeet));
+        }
+
+        [Test]
+        public void givenOneInchAndOneYard_WhenToCompare_ReturnsFalse()
+        {
+            QuantityMeasurements inch = new QuantityMeasurements(1.0, Units.INCH);
+            QuantityMeasurements yard = new QuantityMeasurements(1.0, Units.YARD);
+            Assert.IsFalse(inch.CheckEquals(yard));
+        }
+
+
+        [Test]
+        public void givenThirtySixInchAndOneYard_WhenToCompare_ReturnsTrue()
+        {
+            QuantityMeasurements inch = new QuantityMeasurements(36.0, Units.INCH);
+            QuantityMeasurements yard = new QuantityMeasurements(1.0, Units.YARD);
+            Assert.IsTrue(inch.CheckEquals(yard));
+        }
+
+        [Test]
+        public void givenOneYardAndThirtySixInch_WhenToCompare_ReturnsTrue()
+        {
+            QuantityMeasurements yard = new QuantityMeasurements(1.0, Units.YARD);
+            QuantityMeasurements inch = new QuantityMeasurements(36.0, Units.INCH);
+            Assert.IsTrue(yard.CheckEquals(inch));
+        }
+
+        [Test]
+        public void givenOneYardAndThreeFeet_WhenToCompare_ReturnsTrue()
+        {
+            QuantityMeasurements yard = new QuantityMeasurements(1.0, Units.YARD);
+            QuantityMeasurements feet = new QuantityMeasurements(3.0, Units.FEET);
+            Assert.IsTrue(yard.CheckEquals(feet));
+        }
+
+
     }
 }
