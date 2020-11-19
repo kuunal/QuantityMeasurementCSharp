@@ -82,5 +82,13 @@ namespace QuantityMeasurementTest
             QuantityMeasurements anotherinch = new QuantityMeasurements(2.0, Units.INCH);
             Assert.IsFalse(inch.CheckEquals(anotherinch));
         }
+
+        [Test]
+        public void givenThreeFeetAndOneYard_WhenToCompare_ReturnsTrue()
+        {
+            QuantityMeasurements feet = new QuantityMeasurements(3.0, Units.FEET);
+            QuantityMeasurements yard = new QuantityMeasurements(1.0, Units.YARD);
+            Assert.IsTrue(feet.CheckEquals(yard));
+        }
     }
 }
