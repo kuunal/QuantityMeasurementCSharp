@@ -259,5 +259,13 @@ namespace QuantityMeasurementTest
             double totalInKiloGram = quantityMeasurement.addQuantities(quantityMeasurement, quantityMeasurement1);
             Assert.AreEqual(1001, totalInKiloGram);
         }
+
+        [Test]
+        public void givenTwoHundredAndTwoFarenheit_AndHundredCelsius_WhenCompared_ReturnsTrue()
+        {
+            QuantityMeasurements quantityMeasurement = new QuantityMeasurements(212, Units.FARENHEIT);
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(100, Units.CELSIUS);
+            Assert.IsTrue(quantityMeasurement.CheckEquals(quantityMeasurement1));
+        }
     }
 }
