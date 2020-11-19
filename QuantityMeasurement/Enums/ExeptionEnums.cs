@@ -6,7 +6,7 @@ namespace QuantityMeasurement.Enums
 {
     public enum EXCEPTIONENUMS
     {
-        QUANTITY_MISMATCH,
+        UNIT_MISMATCH,
         NULL_VALUE
     }
 }
