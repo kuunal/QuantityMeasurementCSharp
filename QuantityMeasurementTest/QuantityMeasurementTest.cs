@@ -235,5 +235,20 @@ namespace QuantityMeasurementTest
             Assert.AreEqual(2000, sumInLitres);
         }
 
+        [Test]
+        public void givenOneKiloGram_And1000Grams_WhenCompared_ReturnsTrue()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(1, Units.KILOGRAM);
+            QuantityMeasurements quantityMeasurement = new QuantityMeasurements(1000, Units.GRAMS);
+            Assert.IsTrue(quantityMeasurement.CheckEquals(quantityMeasurement1));
+        }
+
+        [Test]
+        public void givenOneTon_And1000KiloGram_WhenCompared_ReturnsTrue()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(1, Units.TONNE);
+            QuantityMeasurements quantityMeasurement = new QuantityMeasurements(1000, Units.KILOGRAM);
+            Assert.IsTrue(quantityMeasurement.CheckEquals(quantityMeasurement1));
+        }
     }
 }
