@@ -132,6 +132,13 @@ namespace QuantityMeasurementTest
             Assert.IsTrue(yard.CheckEquals(feet));
         }
 
+        [Test]
+        public void givenTwoInchAndFiveCentiMeter_WhenToCompare_ReturnsTrue()
+        {
+            QuantityMeasurements inch = new QuantityMeasurements(2.0, Units.INCH);
+            QuantityMeasurements cm = new QuantityMeasurements(5.0, Units.CENTIMETER);
+            Assert.IsTrue(cm.CheckEquals(inch));
+        }
 
     }
 }
