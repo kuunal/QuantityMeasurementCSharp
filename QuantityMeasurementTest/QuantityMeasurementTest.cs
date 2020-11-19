@@ -149,5 +149,49 @@ namespace QuantityMeasurementTest
             Assert.AreEqual(4, sumInInches);
         }
 
+        [Test]
+        public void givenSingleInch_WhenForAddition_ReturnsSum_InInches()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(2, Units.INCH);
+            double sumInInches = quantityMeasurement1.addQuantities(quantityMeasurement1);
+            Assert.AreEqual(2, sumInInches);
+        }
+
+
+        [Test]
+        public void givenNoQuantities_WhenForAddition_ReturnsZero()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(2, Units.INCH);
+            double sumInInches = quantityMeasurement1.addQuantities();
+            Assert.AreEqual(0, sumInInches);
+        }
+
+        [Test]
+        public void givenOneFeet_AndTwoInch_WhenAdded_ReturnsSum_InInches()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(1, Units.FEET);
+            QuantityMeasurements quantityMeasurement = new QuantityMeasurements(2, Units.INCH);
+            double sumInInches = quantityMeasurement.addQuantities(quantityMeasurement, quantityMeasurement1);
+            Assert.AreEqual(14, sumInInches, 0);
+        }
+
+        [Test]
+        public void givenFeets_WhenAdded_ReturnsSum_InInches()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(1, Units.FEET);
+            QuantityMeasurements quantityMeasurement = new QuantityMeasurements(1, Units.FEET);
+            double sumInInches = quantityMeasurement.addQuantities(quantityMeasurement, quantityMeasurement1);
+            Assert.AreEqual(24, sumInInches, 0);
+        }
+
+        [Test]
+        public void givenInch_AndCentiMeter_WhenAdded_ReturnsSum_InInches()
+        {
+            QuantityMeasurements quantityMeasurement1 = new QuantityMeasurements(2, Units.INCH);
+            QuantityMeasurements quantityMeasurement = new QuantityMeasurements(2.5, Units.CENTIMETER);
+            double sumInInches = quantityMeasurement.addQuantities(quantityMeasurement, quantityMeasurement1);
+            Assert.AreEqual(3, sumInInches, 0);
+        }
+
     }
 }
