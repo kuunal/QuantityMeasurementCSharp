@@ -10,7 +10,8 @@ namespace QuantityMeasurement.Enums
         public enum CATEGORIES
         {
             LENGTH,
-            VOLUMES
+            VOLUMES,
+            WEIGHTS
         }
         public double value { get; }
         public CATEGORIES category { get; set; }
@@ -43,7 +44,17 @@ namespace QuantityMeasurement.Enums
         LITRE,
 
         [EnumData(3780, EnumData.CATEGORIES.VOLUMES)]
-        GALLON
+        GALLON,
+
+        [EnumData(1, EnumData.CATEGORIES.VOLUMES)]
+        KILOGRAM,
+
+        [EnumData(0.001, EnumData.CATEGORIES.WEIGHTS)]
+        GRAMS,
+
+        [EnumData(1000, EnumData.CATEGORIES.WEIGHTS)]
+        TONNE
+
 
     }
 
