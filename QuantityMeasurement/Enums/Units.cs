@@ -5,15 +5,39 @@ using System.Text;
 
 namespace QuantityMeasurement.Enums
 {
+    public class EnumData : System.Attribute
+    {
+        public enum CATEGORIES
+        {
+            LENGTH
+        }
+        public double value { get; set; }
+        public CATEGORIES category { get; set; }
+        public EnumData() { }
+
+        public EnumData(double value, CATEGORIES category)
+        {
+            this.value = value;
+            this.category = category;
+        }
+    }
     public enum Units
     {
-        [Description("Length")]
-        FEET = 12,
+        [EnumData(12, EnumData.CATEGORIES.LENGTH)]
+        FEET,
 
-        [Description("Length")]
-        INCH = 1,
+        [EnumData(1, EnumData.CATEGORIES.LENGTH)]
+        INCH,
 
-        [Description("Length")]
-        YARD = 36
+        [EnumData(36, EnumData.CATEGORIES.LENGTH)]
+        YARD,
+
+        [EnumData(0.4, EnumData.CATEGORIES.LENGTH)]
+        CENTIMETER
     }
+
+
+
 }
+
+
