@@ -51,5 +51,12 @@ namespace QuantityMeasurementTest
             Assert.IsTrue(feet.Equals(anotherFeet));
         }
 
+        [Test]
+        public void givenInch_WhenNull_ReturnsFalse()
+        {
+            QuantityMeasurements inch = new QuantityMeasurements(1.0, Units.INCH);
+            QuantityMeasurements anotherinch = null;
+            Assert.IsFalse(inch.Equals(anotherinch));
+        }
     }
 }
