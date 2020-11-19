@@ -20,10 +20,10 @@ namespace QuantityMeasurementTest
         }
 
         [Test]
-        public void givenFeet_WhenEqual_ReturnsTrue()
+        public void givenFeet_WhenEqualValues_ReturnsTrue()
         {
-            QuantityMeasurements feet = new QuantityMeasurements(0.0, Units.FEET);
-            QuantityMeasurements anotherFeet = new QuantityMeasurements(0.0, Units.FEET);
+            QuantityMeasurements feet = new QuantityMeasurements(3.0, Units.FEET);
+            QuantityMeasurements anotherFeet = new QuantityMeasurements(3.0, Units.FEET);
             Assert.IsTrue(feet.CheckEquals(anotherFeet));
         }
 
@@ -70,9 +70,17 @@ namespace QuantityMeasurementTest
         [Test]
         public void givenInch_WhenEqualValues_ReturnsTrue()
         {
-            QuantityMeasurements inch = new QuantityMeasurements(0.0, Units.INCH);
-            QuantityMeasurements anotherinch = new QuantityMeasurements(0.0, Units.INCH);
+            QuantityMeasurements inch = new QuantityMeasurements(2.0, Units.INCH);
+            QuantityMeasurements anotherinch = new QuantityMeasurements(2.0, Units.INCH);
             Assert.IsTrue(inch.CheckEquals(anotherinch));
+        }
+
+        [Test]
+        public void givenInch_WhenNotEqualValues_ReturnsFalse()
+        {
+            QuantityMeasurements inch = new QuantityMeasurements(5.0, Units.INCH);
+            QuantityMeasurements anotherinch = new QuantityMeasurements(2.0, Units.INCH);
+            Assert.IsFalse(inch.CheckEquals(anotherinch));
         }
     }
 }
