@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿// <copyright file="ExceptionEnums.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace QuantityMeasurement.Enums
 {
+    /// <summary>
+    /// Custom attribute for providing more data to enum.
+    /// </summary>
+    /// <seealso cref="System.Attribute" />
     public class EnumData : System.Attribute
     {
+        /// <summary>
+        /// Categories of units
+        /// </summary>
         public enum CATEGORIES
         {
             LENGTH,
@@ -14,16 +20,38 @@ namespace QuantityMeasurement.Enums
             WEIGHTS,
             TEMPERATURE
         }
-        public double value { get; }
-        public CATEGORIES category { get; set; }
-        public EnumData() { }
 
+        /// <summary>
+        /// Gets the value.
+        /// </summary>
+        /// <value>
+        /// The value.
+        /// </value>
+        public double value { get; }
+
+        /// <summary>
+        /// Gets or sets the category.
+        /// </summary>
+        /// <value>
+        /// The category.
+        /// </value>
+        public CATEGORIES category { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EnumData"/> class.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="category">The category.</param>
         public EnumData(double value, CATEGORIES category)
         {
             this.value = value;
             this.category = category;
         }
     }
+
+    /// <summary>
+    /// Available units enum 
+    /// </summary>
     public enum Units
     {
         [EnumData(12, EnumData.CATEGORIES.LENGTH)]
@@ -61,11 +89,7 @@ namespace QuantityMeasurement.Enums
 
         [EnumData(1, EnumData.CATEGORIES.TEMPERATURE)]
         CELSIUS
-
     }
-
-
-
 }
 
 
